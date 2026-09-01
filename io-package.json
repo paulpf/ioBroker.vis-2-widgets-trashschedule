@@ -1,7 +1,7 @@
 {
     "common":  {
                    "name":  "vis-2-widgets-trashschedule",
-                   "version":  "1.0.5",
+                   "version":  "1.0.6",
                    "titleLang":  {
                                      "en":  "VIS 2 Trash Schedule Widgets",
                                      "de":  "VIS 2 Müllabfuhr-Widgets"
@@ -52,6 +52,10 @@
                                            "vis-2"
                                        ],
                    "news":  {
+                                "1.0.6":  {
+                                              "en":  "Keep trash bins in a single row when resizing",
+                                              "de":  "Mülltonnen bleiben beim Verkleinern in einer Reihe"
+                                          },
                                 "1.0.5":  {
                                               "en":  "Fixed runtime loading of the widget set",
                                               "de":  "Laden des Widget-Sets in Ansichten korrigiert"

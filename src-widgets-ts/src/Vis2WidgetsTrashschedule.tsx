@@ -26,7 +26,7 @@ interface TrashType {
 
 const css = `
 @keyframes trashschedule-glow { 0% { box-shadow: 0 0 #f30b0b; } 100% { box-shadow: 0 0 10px 8px transparent; } }
-.trashschedule-list { display:flex; flex-wrap:wrap; align-items:flex-start; transform-origin:top left; color:inherit; font-family:inherit; }
+.trashschedule-list { display:flex; flex-wrap:nowrap; align-items:flex-start; transform-origin:top left; color:inherit; font-family:inherit; }
 .trashschedule-item { position:relative; width:115px; margin:20px 0 0 20px; text-align:center; }
 .trashschedule-name { display:block; min-height:1.2em; overflow:hidden; font-weight:bold; text-overflow:ellipsis; white-space:nowrap; }
 .trashschedule-bin { position:relative; box-sizing:border-box; width:115px; height:200px; margin:0 auto; background-repeat:no-repeat; background-position:center; background-size:auto 200px; }
