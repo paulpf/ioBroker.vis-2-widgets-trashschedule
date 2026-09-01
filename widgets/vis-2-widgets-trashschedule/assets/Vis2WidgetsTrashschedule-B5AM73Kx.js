@@ -2,9 +2,9 @@ import{_ as p,a as n}from"./_virtual_mf___mfe_internal__vis2WidgetsTrashschedule
 @keyframes trashschedule-glow { 0% { box-shadow: 0 0 #f30b0b; } 100% { box-shadow: 0 0 10px 8px transparent; } }
 .trashschedule-list { display:flex; flex-wrap:nowrap; align-items:flex-start; transform-origin:top left; color:inherit; font-family:inherit; }
 .trashschedule-item { position:relative; width:115px; margin:20px 0 0 20px; text-align:center; }
-.trashschedule-name { display:block; min-height:1.2em; overflow:hidden; font-weight:bold; text-overflow:ellipsis; white-space:nowrap; }
+.trashschedule-name { display:block; height:2.4em; overflow:hidden; font-weight:bold; line-height:1.2; overflow-wrap:anywhere; white-space:normal; }
 .trashschedule-bin { position:relative; box-sizing:border-box; width:115px; height:200px; margin:0 auto; background-repeat:no-repeat; background-position:center; background-size:auto 200px; }
-.trashschedule-days { position:absolute; z-index:1; top:65%; left:50%; width:50px; height:50px; border-radius:20px; background:#cccccc88; font-size:1.5em; font-weight:bold; line-height:50px; transform:translate(-50%,-50%); }
+.trashschedule-days { position:absolute; z-index:1; top:70%; left:50%; width:50px; height:50px; border-radius:20px; background:#cccccc88; font-size:1.5em; font-weight:bold; line-height:50px; transform:translate(-50%,-50%); }
 .trashschedule-date { display:block; font-size:.8em; }
 .trashschedule-glow .trashschedule-days { animation:trashschedule-glow 2s ease infinite; }
 .trashschedule-error { box-sizing:border-box; width:100%; padding:12px; color:#b71c1c; font:14px sans-serif; }
