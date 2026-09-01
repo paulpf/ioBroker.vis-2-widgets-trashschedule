@@ -1,0 +1,64 @@
+{
+    "common":  {
+                   "name":  "vis-2-widgets-trashschedule",
+                   "version":  "1.0.0",
+                   "titleLang":  {
+                                     "en":  "VIS 2 Trash Schedule Widgets",
+                                     "de":  "VIS 2 Müllabfuhr-Widgets"
+                                 },
+                   "desc":  {
+                                "en":  "Native VIS 2 widget for displaying trash pickup schedules",
+                                "de":  "Natives VIS-2-Widget zur Anzeige von Müllabfuhrterminen"
+                            },
+                   "authors":  [
+                                   "Paul Pfannschmidt"
+                               ],
+                   "keywords":  [
+                                    "vis-2",
+                                    "trash",
+                                    "calendar"
+                                ],
+                   "licenseInformation":  {
+                                              "license":  "MIT",
+                                              "type":  "free"
+                                          },
+                   "platform":  "Javascript/Node.js",
+                   "icon":  "vis-2-widgets-trashschedule.png",
+                   "extIcon":  "https://raw.githubusercontent.com/paulpf/ioBroker.vis-2-widgets-trashschedule/master/admin/vis-2-widgets-trashschedule.png",
+                   "enabled":  true,
+                   "readme":  "https://github.com/paulpf/ioBroker.vis-2-widgets-trashschedule/blob/master/README.md",
+                   "loglevel":  "info",
+                   "mode":  "once",
+                   "adminUI":  {
+                                   "config":  "none"
+                               },
+                   "onlyWWW":  true,
+                   "tier":  3,
+                   "type":  "visualization-widgets",
+                   "connectionType":  "local",
+                   "dataSource":  "push",
+                   "visWidgets":  {
+                                      "vis2WidgetsTrashschedule":  {
+                                                                       "i18n":  "component",
+                                                                       "name":  "vis2WidgetsTrashschedule",
+                                                                       "url":  "vis-2-widgets-trashschedule/customWidgets.js",
+                                                                       "bundlerType":  "module",
+                                                                       "components":  [
+                                                                                          "Vis2WidgetsTrashschedule"
+                                                                                      ]
+                                                                   }
+                                  },
+                   "restartAdapters":  [
+                                           "vis-2"
+                                       ]
+               },
+    "native":  {
+
+               },
+    "objects":  [
+
+                ],
+    "instanceObjects":  [
+
+                        ]
+}

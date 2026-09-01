@@ -1,0 +1,38 @@
+const translations = {
+    en: {
+        widget_set: 'Trash schedule',
+        widget: 'Trash schedule',
+        source: 'Data source',
+        size: 'Size (%)',
+        limit: 'Maximum entries (0 = all)',
+        glow: 'Glow when due',
+        glowLimit: 'Days until glow',
+        showName: 'Show name',
+        showDate: 'Show date',
+        dateLocale: 'Date locale',
+        dateWeekday: 'Weekday',
+        hide: 'Hidden',
+        long: 'Long',
+        short: 'Short',
+        invalidData: 'The selected state does not contain valid trash schedule data.',
+    },
+    de: {
+        widget_set: 'Müllabfuhr',
+        widget: 'Müllabfuhr',
+        source: 'Datenquelle',
+        size: 'Größe (%)',
+        limit: 'Maximale Einträge (0 = alle)',
+        glow: 'Leuchten, wenn fällig',
+        glowLimit: 'Tage bis zum Leuchten',
+        showName: 'Name anzeigen',
+        showDate: 'Datum anzeigen',
+        dateLocale: 'Datumsgebietsschema',
+        dateWeekday: 'Wochentag',
+        hide: 'Versteckt',
+        long: 'Lang',
+        short: 'Kurz',
+        invalidData: 'Der gewählte Datenpunkt enthält keine gültigen Müllabfuhrdaten.',
+    },
+};
+
+export default { ...translations, prefix: true };
