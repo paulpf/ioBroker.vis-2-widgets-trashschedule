@@ -2,6 +2,8 @@ import React from 'react';
 import type { RxRenderWidgetProps, RxWidgetInfo, VisRxWidgetProps, VisRxWidgetState } from '@iobroker/types-vis-2';
 import type VisRxWidget from '@iobroker/types-vis-2/visRxWidget';
 
+import { getBinImage } from './binImage';
+
 interface TrashScheduleData {
     oid: string;
     size: number;
@@ -27,27 +29,12 @@ const css = `
 .trashschedule-list { display:flex; flex-wrap:wrap; align-items:flex-start; transform-origin:top left; color:inherit; font-family:inherit; }
 .trashschedule-item { position:relative; width:115px; margin:20px 0 0 20px; text-align:center; }
 .trashschedule-name { display:block; min-height:1.2em; overflow:hidden; font-weight:bold; text-overflow:ellipsis; white-space:nowrap; }
-.trashschedule-bin { position:relative; box-sizing:border-box; width:92px; height:160px; margin:6px auto; border:5px solid var(--bin-dark); border-radius:7px 7px 14px 14px; background:linear-gradient(100deg,var(--bin-light),var(--bin-color) 42%,var(--bin-dark)); clip-path:polygon(8% 8%,92% 8%,83% 100%,17% 100%); }
-.trashschedule-bin::before { content:''; position:absolute; z-index:0; top:-11px; left:-7px; width:96px; height:17px; border:4px solid var(--bin-dark); border-radius:5px; background:var(--bin-color); transform:rotate(-2deg); }
-.trashschedule-days { position:absolute; z-index:1; top:58%; left:50%; width:50px; height:50px; border-radius:20px; background:#cccccc88; font-size:1.5em; font-weight:bold; line-height:50px; transform:translate(-50%,-50%); }
+.trashschedule-bin { position:relative; box-sizing:border-box; width:115px; height:200px; margin:0 auto; background-repeat:no-repeat; background-position:center; background-size:auto 200px; }
+.trashschedule-days { position:absolute; z-index:1; top:65%; left:50%; width:50px; height:50px; border-radius:20px; background:#cccccc88; font-size:1.5em; font-weight:bold; line-height:50px; transform:translate(-50%,-50%); }
 .trashschedule-date { display:block; font-size:.8em; }
 .trashschedule-glow .trashschedule-days { animation:trashschedule-glow 2s ease infinite; }
 .trashschedule-error { box-sizing:border-box; width:100%; padding:12px; color:#b71c1c; font:14px sans-serif; }
 `;
-
-function normalizeColor(value?: string): string {
-    return /^#[0-9a-f]{6}$/i.test(value || '') ? value! : '#8a8a8a';
-}
-
-function shiftColor(hex: string, amount: number): string {
-    const value = Number.parseInt(hex.slice(1), 16);
-    const channel = (shift: number): number => Math.max(0, Math.min(255, shift));
-    const r = channel((value >> 16) + amount);
-    const g = channel(((value >> 8) & 255) + amount);
-    const b = channel((value & 255) + amount);
-    return `#${[r, g, b].map(item => item.toString(16).padStart(2, '0')).join('')}`;
-}
-
 export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typeof VisRxWidget)<
     TrashScheduleData,
     VisRxWidgetState
@@ -99,7 +86,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
     }
 
     static getI18nPrefix(): string {
-        return 'trashschedule_';
+        return `${Vis2WidgetsTrashschedule.adapter}_`;
     }
 
     private getItems(): TrashType[] | null {
@@ -142,7 +129,6 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
             >
                 <style>{css}</style>
                 {visible.map((item, index) => {
-                    const color = normalizeColor(item._color);
                     const days = Number(item.daysLeft);
                     const glow = data.glow && days <= (Number(data.glowLimit) || 0);
                     let formattedDate = '';
@@ -160,13 +146,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
                             {data.showName !== false && <span className="trashschedule-name">{item.name}</span>}
                             <div
                                 className="trashschedule-bin"
-                                style={
-                                    {
-                                        '--bin-color': color,
-                                        '--bin-light': shiftColor(color, 35),
-                                        '--bin-dark': shiftColor(color, -55),
-                                    } as React.CSSProperties
-                                }
+                                style={{ backgroundImage: getBinImage(item._color) }}
                             >
                                 <span className="trashschedule-days">{Number.isFinite(days) ? days : '?'}</span>
                             </div>

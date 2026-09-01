@@ -1,14 +1,14 @@
 {
     "common":  {
                    "name":  "vis-2-widgets-trashschedule",
-                   "version":  "1.0.2",
+                   "version":  "1.0.3",
                    "titleLang":  {
                                      "en":  "VIS 2 Trash Schedule Widgets",
-                                     "de":  "VIS 2 MÃƒÂ¼llabfuhr-Widgets"
+                                     "de":  "VIS 2 MÃƒÆ’Ã‚Â¼llabfuhr-Widgets"
                                  },
                    "desc":  {
                                 "en":  "Native VIS 2 widget for displaying trash pickup schedules",
-                                "de":  "Natives VIS-2-Widget zur Anzeige von MÃƒÂ¼llabfuhrterminen"
+                                "de":  "Natives VIS-2-Widget zur Anzeige von MÃƒÆ’Ã‚Â¼llabfuhrterminen"
                             },
                    "authors":  [
                                    "Paul Pfannschmidt"
@@ -52,13 +52,17 @@
                                            "vis-2"
                                        ],
                    "news":  {
+                                "1.0.3":  {
+                                              "en":  "Restored the original trash bin artwork, improved dark-bin contrast and fixed VIS 2 attribute translations",
+                                              "de":  "Die ursprüngliche Mülltonnengrafik wurde wiederhergestellt, der Kontrast dunkler Tonnen verbessert und die Übersetzungen der VIS-2-Attribute korrigiert"
+                                          },
                                 "1.0.2":  {
                                               "en":  "Include the compiled widget bundle so VIS 2 can load the widget",
                                               "de":  "Das kompilierte Widget-Bundle wird mitgeliefert, damit VIS 2 das Widget laden kann"
                                           },
                                 "1.0.1":  {
                                               "en":  "Added the vis2 prefix to the widget display name",
-                                              "de":  "Das Präfix vis2 wurde zum Anzeigenamen des Widgets hinzugefügt"
+                                              "de":  "Das PrÃ¤fix vis2 wurde zum Anzeigenamen des Widgets hinzugefÃ¼gt"
                                           }
                             }
                },
