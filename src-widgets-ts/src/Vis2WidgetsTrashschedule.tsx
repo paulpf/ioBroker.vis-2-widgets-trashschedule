@@ -21,7 +21,38 @@ interface TrashType {
     daysLeft?: number;
     nextDate?: string;
     _color?: string;
-    _completed?: boolean;
+    _completed?: boolean | string;
+}
+
+function normalizeBoolean(value: unknown, fallback = false): boolean {
+    if (typeof value === 'boolean') {
+        return value;
+    }
+    if (typeof value === 'string') {
+        const normalized = value.trim().toLowerCase();
+        if (normalized === 'true' || normalized === '1') {
+            return true;
+        }
+        if (normalized === 'false' || normalized === '0' || normalized === '') {
+            return false;
+        }
+    }
+    if (typeof value === 'number') {
+        return value !== 0;
+    }
+    return fallback;
+}
+
+function parseLocalDate(value?: string): Date | null {
+    if (!value) {
+        return null;
+    }
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+        const [year, month, day] = value.split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
 }
 
 const css = `
@@ -132,7 +163,12 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
         }
 
         const limit = Number(data.limit) || 0;
-        const visible = items.filter(item => !item._completed).slice(0, limit > 0 ? limit : undefined);
+        const showDate = normalizeBoolean(data.showDate, true);
+        const showName = normalizeBoolean(data.showName, true);
+        const glowEnabled = normalizeBoolean(data.glow, false);
+        const visible = items
+            .filter(item => !normalizeBoolean(item._completed, false))
+            .slice(0, limit > 0 ? limit : undefined);
         const dateOptions: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'numeric' };
         if (data.dateWeekday !== 'hide') {
             dateOptions.weekday = data.dateWeekday || 'long';
@@ -146,11 +182,11 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
                 <style>{css}</style>
                 {visible.map((item, index) => {
                     const days = Number(item.daysLeft);
-                    const glow = data.glow && days <= (Number(data.glowLimit) || 0);
+                    const glow = glowEnabled && days <= (Number(data.glowLimit) || 0);
                     let formattedDate = '';
-                    if (data.showDate && item.nextDate) {
-                        const date = new Date(item.nextDate);
-                        if (!Number.isNaN(date.getTime())) {
+                    if (showDate && item.nextDate) {
+                        const date = parseLocalDate(item.nextDate);
+                        if (date) {
                             formattedDate = date.toLocaleDateString(data.dateLocale || 'de-DE', dateOptions);
                         }
                     }
@@ -159,7 +195,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
                             className={`trashschedule-item${glow ? ' trashschedule-glow' : ''}`}
                             key={`${item.name || 'trash'}-${item.nextDate || index}`}
                         >
-                            {data.showName !== false && <span className="trashschedule-name">{item.name}</span>}
+                            {showName && <span className="trashschedule-name">{item.name}</span>}
                             <div
                                 className="trashschedule-bin"
                                 style={{ backgroundImage: getBinImage(item._color) }}
