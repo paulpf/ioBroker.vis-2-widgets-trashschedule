@@ -35,4 +35,4 @@ const translations = {
     },
 };
 
-export default { ...translations, prefix: true };
+export default translations;

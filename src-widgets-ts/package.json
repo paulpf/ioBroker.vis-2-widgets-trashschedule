@@ -1,7 +1,7 @@
 {
     "name":  "iobroker.vis-2-widgets-trashschedule",
     "private":  true,
-    "version":  "1.0.3",
+    "version":  "1.0.4",
     "type":  "module",
     "dependencies":  {
                          "@iobroker/types-vis-2":  "^2.13.17",

@@ -48,28 +48,48 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
     static getWidgetInfo(): RxWidgetInfo {
         return {
             id: 'tplTrashScheduleVis2',
-            visSet: 'ioBroker.vis-2-widgets-trashschedule',
+            visSet: 'vis2Trashschedule',
             visSetIcon: 'widgets/vis-2-widgets-trashschedule/img/trashschedule.png',
-            visSetLabel: 'widget_set',
+            visSetLabel: 'vis2 Müllabfuhr',
             visSetColor: '#4d8c52',
-            visName: 'widget',
+            visName: 'Müllabfuhr',
             visAttrs: [
                 {
                     name: 'common',
                     fields: [
-                        { name: 'oid', label: 'source', type: 'id', default: 'trashschedule.0.type.json' },
-                        { name: 'size', label: 'size', type: 'slider', min: 10, max: 200, step: 1, default: 100 },
-                        { name: 'limit', label: 'limit', type: 'slider', min: 0, max: 20, step: 1, default: 0 },
-                        { name: 'glow', label: 'glow', type: 'checkbox', default: false },
-                        { name: 'glowLimit', label: 'glowLimit', type: 'slider', min: 0, max: 10, step: 1, default: 1 },
-                        { name: 'showName', label: 'showName', type: 'checkbox', default: true },
-                        { name: 'showDate', label: 'showDate', type: 'checkbox', default: true },
-                        { name: 'dateLocale', label: 'dateLocale', type: 'text', default: 'de-DE' },
+                        { name: 'oid', label: 'Datenquelle', type: 'id', default: 'trashschedule.0.type.json' },
+                        { name: 'size', label: 'Größe (%)', type: 'slider', min: 10, max: 200, step: 1, default: 100 },
+                        {
+                            name: 'limit',
+                            label: 'Maximale Einträge (0 = alle)',
+                            type: 'slider',
+                            min: 0,
+                            max: 20,
+                            step: 1,
+                            default: 0,
+                        },
+                        { name: 'glow', label: 'Leuchten, wenn fällig', type: 'checkbox', default: false },
+                        {
+                            name: 'glowLimit',
+                            label: 'Tage bis zum Leuchten',
+                            type: 'slider',
+                            min: 0,
+                            max: 10,
+                            step: 1,
+                            default: 1,
+                        },
+                        { name: 'showName', label: 'Name anzeigen', type: 'checkbox', default: true },
+                        { name: 'showDate', label: 'Datum anzeigen', type: 'checkbox', default: true },
+                        { name: 'dateLocale', label: 'Datumsgebietsschema', type: 'text', default: 'de-DE' },
                         {
                             name: 'dateWeekday',
-                            label: 'dateWeekday',
+                            label: 'Wochentag',
                             type: 'select',
-                            options: ['hide', 'long', 'short'],
+                            options: [
+                                { value: 'hide', label: 'Ausblenden' },
+                                { value: 'long', label: 'Lang' },
+                                { value: 'short', label: 'Kurz' },
+                            ],
                             default: 'long',
                         },
                     ],
@@ -83,10 +103,6 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
     // eslint-disable-next-line class-methods-use-this
     getWidgetInfo(): RxWidgetInfo {
         return Vis2WidgetsTrashschedule.getWidgetInfo();
-    }
-
-    static getI18nPrefix(): string {
-        return `${Vis2WidgetsTrashschedule.adapter}_`;
     }
 
     private getItems(): TrashType[] | null {
@@ -110,7 +126,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
             return (
                 <div className="trashschedule-error">
                     <style>{css}</style>
-                    {Vis2WidgetsTrashschedule.t('invalidData')}
+                    {'Ungültige Daten: Erwartet wird ein JSON-Array.'}
                 </div>
             );
         }
