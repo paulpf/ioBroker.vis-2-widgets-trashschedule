@@ -1,6 +1,6 @@
 {
     "name":  "iobroker.vis-2-widgets-trashschedule",
-    "version":  "1.0.0",
+    "version":  "1.0.1",
     "description":  "Native VIS 2 widget for displaying ioBroker trash schedule data",
     "author":  {
                    "name":  "Paul Pfannschmidt"
