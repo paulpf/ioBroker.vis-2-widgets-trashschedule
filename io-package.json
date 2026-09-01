@@ -1,7 +1,7 @@
 {
     "common":  {
                    "name":  "vis-2-widgets-trashschedule",
-                   "version":  "1.0.4",
+                   "version":  "1.0.5",
                    "titleLang":  {
                                      "en":  "VIS 2 Trash Schedule Widgets",
                                      "de":  "VIS 2 Müllabfuhr-Widgets"
@@ -52,6 +52,10 @@
                                            "vis-2"
                                        ],
                    "news":  {
+                                "1.0.5":  {
+                                              "en":  "Fixed runtime loading of the widget set",
+                                              "de":  "Laden des Widget-Sets in Ansichten korrigiert"
+                                          },
                                 "1.0.4":  {
                                               "en":  "Fixed widget type registration and VIS 2 translations",
                                               "de":  "Registrierung des Widget-Typs und VIS-2-Übersetzungen korrigiert"

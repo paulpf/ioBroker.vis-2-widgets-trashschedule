@@ -48,7 +48,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
     static getWidgetInfo(): RxWidgetInfo {
         return {
             id: 'tplTrashScheduleVis2',
-            visSet: 'vis2Trashschedule',
+            visSet: 'vis-2-widgets-trashschedule',
             visSetIcon: 'widgets/vis-2-widgets-trashschedule/img/trashschedule.png',
             visSetLabel: 'vis2 Müllabfuhr',
             visSetColor: '#4d8c52',
