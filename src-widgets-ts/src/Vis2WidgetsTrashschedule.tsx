@@ -65,7 +65,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
             visSetIcon: 'widgets/vis-2-widgets-trashschedule/img/trashschedule.png',
             visSetLabel: 'widget_set',
             visSetColor: '#4d8c52',
-            visName: 'ioBroker.vis-2-widgets-trashschedule',
+            visName: 'widget',
             visAttrs: [
                 {
                     name: 'common',

@@ -1,7 +1,7 @@
 const translations = {
     en: {
-        widget_set: 'Trash schedule',
-        widget: 'Trash schedule',
+        widget_set: 'vis2 Trash Schedule',
+        widget: 'vis2 Trash Schedule',
         source: 'Data source',
         size: 'Size (%)',
         limit: 'Maximum entries (0 = all)',
@@ -17,8 +17,8 @@ const translations = {
         invalidData: 'The selected state does not contain valid trash schedule data.',
     },
     de: {
-        widget_set: 'Müllabfuhr',
-        widget: 'Müllabfuhr',
+        widget_set: 'vis2 Müllabfuhr',
+        widget: 'vis2 Müllabfuhr',
         source: 'Datenquelle',
         size: 'Größe (%)',
         limit: 'Maximale Einträge (0 = alle)',
