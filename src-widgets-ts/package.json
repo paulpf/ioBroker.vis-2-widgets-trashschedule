@@ -12,7 +12,7 @@
                          "iobroker.vis-2-widgets-trashschedule":  "file:..",
                          "react":  "^18.3.1",
                          "react-dom":  "^18.3.1",
-                         "typescript":  "^5.9.3",
+                         "typescript":  "^7.0.2",
                          "vite":  "^7.3.2"
                      },
     "scripts":  {
