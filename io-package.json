@@ -1,14 +1,14 @@
 {
     "common":  {
                    "name":  "vis-2-widgets-trashschedule",
-                   "version":  "1.0.1",
+                   "version":  "1.0.2",
                    "titleLang":  {
                                      "en":  "VIS 2 Trash Schedule Widgets",
-                                     "de":  "VIS 2 MÃ¼llabfuhr-Widgets"
+                                     "de":  "VIS 2 MÃƒÂ¼llabfuhr-Widgets"
                                  },
                    "desc":  {
                                 "en":  "Native VIS 2 widget for displaying trash pickup schedules",
-                                "de":  "Natives VIS-2-Widget zur Anzeige von MÃ¼llabfuhrterminen"
+                                "de":  "Natives VIS-2-Widget zur Anzeige von MÃƒÂ¼llabfuhrterminen"
                             },
                    "authors":  [
                                    "Paul Pfannschmidt"
@@ -52,6 +52,10 @@
                                            "vis-2"
                                        ],
                    "news":  {
+                                "1.0.2":  {
+                                              "en":  "Include the compiled widget bundle so VIS 2 can load the widget",
+                                              "de":  "Das kompilierte Widget-Bundle wird mitgeliefert, damit VIS 2 das Widget laden kann"
+                                          },
                                 "1.0.1":  {
                                               "en":  "Added the vis2 prefix to the widget display name",
                                               "de":  "Das Präfix vis2 wurde zum Anzeigenamen des Widgets hinzugefügt"
