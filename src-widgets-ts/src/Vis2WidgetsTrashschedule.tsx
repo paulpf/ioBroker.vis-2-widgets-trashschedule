@@ -48,7 +48,7 @@ function normalizeBoolean(value: unknown, fallback = false): boolean {
 }
 
 function parseLocalDate(value?: unknown): Date | null {
-    if (!value) {
+    if (value === null || value === undefined) {
         return null;
     }
     if (value instanceof Date) {
