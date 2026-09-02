@@ -24,6 +24,10 @@ interface TrashType {
     _completed?: boolean | string;
 }
 
+function isTrashType(value: unknown): value is TrashType {
+    return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
 function normalizeBoolean(value: unknown, fallback = false): boolean {
     if (typeof value === 'boolean') {
         return value;
@@ -43,8 +47,18 @@ function normalizeBoolean(value: unknown, fallback = false): boolean {
     return fallback;
 }
 
-function parseLocalDate(value?: string): Date | null {
+function parseLocalDate(value?: unknown): Date | null {
     if (!value) {
+        return null;
+    }
+    if (value instanceof Date) {
+        return Number.isNaN(value.getTime()) ? null : value;
+    }
+    if (typeof value === 'number') {
+        const date = new Date(value);
+        return Number.isNaN(date.getTime()) ? null : date;
+    }
+    if (typeof value !== 'string') {
         return null;
     }
     if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -143,7 +157,7 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
         }
         try {
             const parsed: unknown = typeof raw === 'string' ? JSON.parse(raw) : raw;
-            return Array.isArray(parsed) ? (parsed as TrashType[]) : null;
+            return Array.isArray(parsed) ? parsed.filter(isTrashType) : null;
         } catch {
             return null;
         }
@@ -187,7 +201,11 @@ export default class Vis2WidgetsTrashschedule extends (window.visRxWidget as typ
                     if (showDate && item.nextDate) {
                         const date = parseLocalDate(item.nextDate);
                         if (date) {
-                            formattedDate = date.toLocaleDateString(data.dateLocale || 'de-DE', dateOptions);
+                            try {
+                                formattedDate = date.toLocaleDateString(data.dateLocale || 'de-DE', dateOptions);
+                            } catch {
+                                formattedDate = date.toLocaleDateString('de-DE', dateOptions);
+                            }
                         }
                     }
                     return (
